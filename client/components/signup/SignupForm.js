@@ -6,7 +6,7 @@ import classnames from 'classnames';
 import validateInput from '../../../server/shared/validations/signup';
 import TextFieldGroup from '../common/TextFieldGroup';
 
-import { browserHistory } from 'react-router';
+// import { browserHistory } from 'react-router';
 
 class SignupForm extends React.Component{
 	constructor(props){
@@ -32,15 +32,13 @@ class SignupForm extends React.Component{
 	}
 	
 	isValid(){
-		console.log(this.state);
+		// console.log(this.state);
 		const { errors, isValid } = validateInput(this.state);
 		
 		if(!isValid){
-			
 			this.setState({ errors });
 		}
-		setTimeout(()=>console.log(this.state),300)
-		// console.log(isValid);
+		// setTimeout(()=>console.log(this.state),300)
 		return isValid;
 	}
 
