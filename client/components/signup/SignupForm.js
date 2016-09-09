@@ -1,7 +1,6 @@
 import React from 'react';
 import timezones from '../../data/timezones';
 import map from 'lodash/map';
-// import axios from 'axios';
 import classnames from 'classnames';
 import validateInput from '../../../server/shared/validations/signup';
 import TextFieldGroup from '../common/TextFieldGroup';
@@ -9,21 +8,22 @@ import TextFieldGroup from '../common/TextFieldGroup';
 // import { browserHistory } from 'react-router';
 
 class SignupForm extends React.Component{
-	constructor(props){
-		super(props);
-		this.state = {
-			username: '',
-			email: '',
-			password: '',
-			passwordConfirmation: '',
-			timezone: '',
-			errors:{},
-			isLoadding: false,
-		}
+	constructor(props) {
+    super(props);
+    this.state = {
+      username: '',
+      email: '',
+      password: '',
+      passwordConfirmation: '',
+      timezone: '',
+      errors: {},
+      isLoading: false
+    }
 
-		this.onChange = this.onChange.bind(this);
-		this.onSubmit = this.onSubmit.bind(this);
-	}
+    this.onChange = this.onChange.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
+  }
+
 	
 	onChange(e){
 		this.setState({
@@ -38,9 +38,27 @@ class SignupForm extends React.Component{
 		if(!isValid){
 			this.setState({ errors });
 		}
-		// setTimeout(()=>console.log(this.state),300)
+		setTimeout(()=>console.log(this.state),300)
 		return isValid;
 	}
+
+	// onSubmit(e) {
+	//   e.preventDefault();
+
+	//   if (this.isValid()) {
+	//     this.setState({ errors: {}, isLoading: true });
+	//     this.props.userSignupRequest(this.state).then(
+	//       () => {
+	//         this.props.addFlashMessage({
+	//           type: 'success',
+	//           text: 'You signed up successfully. Welcome!'
+	//         });
+	//         this.context.router.push('/');
+	//       },
+	//       ({ data }) => this.setState({ errors: data, isLoading: false })
+	//     );
+	//   }
+	// }
 
 	onSubmit(e) {
 	  e.preventDefault();
@@ -57,7 +75,6 @@ class SignupForm extends React.Component{
 						text:'You signed up successfully. welcome!'
 					});
 					this.context.router.push('/');
-					// browserHistory.push('/');
 				})
 			  .catch( 
 			  	(error) => {
